@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Card from './Card'
+import Bgchanger from './Bgchange'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,6 +22,8 @@ function App() {
       */}
       <Card data={data} />
       <Card data={data2} />
+      
+      <Bgchanger/>
 
     </>
   )
