@@ -5,10 +5,10 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './components/Home.jsx'
-
+import { Provider } from 'react-redux'
 import About from './components/About.jsx';
 import Contacts from './components/Contacts.jsx'
-
+import store from './Store.jsx'
 const router = createBrowserRouter([
 
   {
@@ -38,6 +38,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <RouterProvider router={router}></RouterProvider> */}
-    <App/>
+    <Provider store={store}><App/></Provider>
   </StrictMode>,
 )

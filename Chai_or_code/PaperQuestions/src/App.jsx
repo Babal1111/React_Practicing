@@ -22,6 +22,7 @@ import Countdown from './Countdown'
 import Post from '../Post'
 import FormValidation from './FormValidation'
 import Theme from './Theme'
+import Redux from './Redux'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -77,6 +78,7 @@ function App() {
 {/* <FormValidation></FormValidation>
       <Post></Post> */}
       <Theme></Theme>
+      <Redux></Redux>
     </>
   )
 } 
