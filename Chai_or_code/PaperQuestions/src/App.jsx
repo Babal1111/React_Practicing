@@ -19,6 +19,9 @@ import w3 from './assets/wrestler/w3.jpg'
 import Wrestler from './Wrestler'
 import Axios from '../Axios'
 import Countdown from './Countdown'
+import Post from '../Post'
+import FormValidation from './FormValidation'
+import Theme from './Theme'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -69,8 +72,11 @@ function App() {
 
       {/* <Wrestler wrestlerData={wrestlerData}></Wrestler> */}
 
-<Countdown></Countdown>
+{/* <Countdown></Countdown> */}
       {/* <Axios></Axios> */}
+{/* <FormValidation></FormValidation>
+      <Post></Post> */}
+      <Theme></Theme>
     </>
   )
 } 

@@ -2,16 +2,15 @@ import { useState, useRef, useEffect } from "react";
 
 export default function Countdown() {
     const [countdown, setCountdown] = useState(60);
-    const intervalId = useRef(null); // Use useRef to hold the interval ID
+    const intervalId = useRef(null);
 
     const start = () => {
-        clearInterval(intervalId.current); // Clear any existing interval
-        setCountdown(60); // Reset countdown to 60 before starting
+        clearInterval(intervalId);
         intervalId.current = setInterval(() => {
             setCountdown(prevCountdown => {
                 if (prevCountdown <= 1) {
-                    clearInterval(intervalId.current); // Clear interval when countdown reaches zero
-                    return 0; // Prevent going below 0
+                    clearInterval(intervalId.current);
+                    return 0;
                 }
                 return prevCountdown - 1;
             });
@@ -19,12 +18,21 @@ export default function Countdown() {
     };
 
     const reset = () => {
-        clearInterval(intervalId.current); // Clear the interval
-        setCountdown(60); // Reset countdown to 60
+
+stop();
+        setCountdown(60);
     };
 
-    useEffect(() => {
-        return () => {
-            clearInterval(intervalId.current); // Clear interval on component unmount
-        };
-    }, 
+    const stop = () => {
+        clearInterval(intervalId.current);
+    };
+
+    return (
+        <div>
+            <h1>{countdown}</h1>
+            <button onClick={start}>Start</button>
+            <button onClick={reset}>Reset</button>
+            <button onClick={stop}>Stop</button>
+        </div>
+    );
+}
