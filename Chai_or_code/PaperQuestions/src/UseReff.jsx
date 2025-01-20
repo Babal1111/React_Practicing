@@ -1,7 +1,5 @@
 import { useState,useRef,useEffect } from "react"
 
-
-
 export default function UseReff(){
     const [num,setNum] = useState("1");
     const [mul,setMul]= useState("1");
@@ -13,9 +11,6 @@ export default function UseReff(){
 
 
     },[num,mul])
-
-
-
 
     return(<>
 

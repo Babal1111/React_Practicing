@@ -77,8 +77,8 @@ function App() {
       {/* <Axios></Axios> */}
 {/* <FormValidation></FormValidation>
       <Post></Post> */}
-      <Theme></Theme>
-      <Redux></Redux>
+      {/* <Theme></Theme>
+      <Redux></Redux> */}
     </>
   )
 } 
