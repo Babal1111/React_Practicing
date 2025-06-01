@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        hi this is dom
+
+    <button> click me to see magic</button>
+
+    <h1 id = "txt1"></h1>
+
+
+
+    <script>
+        let btn = document.querySelector('button');
+
+        btn.addEventListener('click',hi);
+        function hi(){
+            console.log('hello world');
+            let text1 = document.querySelector('#txt1');
+            text1.textContent = "MAgic , on click";
+
+        }
+    </script>
+
+</body>
+</html>
