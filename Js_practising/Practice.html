@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h3 id="sum">The sum is: <span id="h1"></span></h3>
+    <h3>Product is: <span id="h2"></span></h3>
+
+    <script>
+        /// take n from user, give sum and product of numbers till n;
+
+let n = prompt('enter a number :');
+let arr = [];
+for(let i=1;i<n;i++){
+ arr[i-1] = i;
+ // or use push directly
+ 
+}
+
+let sum = arr.reduce((prev,curr)=>{
+    return prev+curr;
+})
+let product = arr.reduce((prev,curr)=>{
+    return prev*curr;
+});
+
+let summ = document.getElementById('h1');
+summ.textContent = sum;
+
+document.getElementById('h2').textContent = product;
+
+    </script>
+</body>
+</html>

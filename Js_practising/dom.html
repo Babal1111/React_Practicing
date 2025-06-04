@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 2px;
+        }
+    </style>
 </head>
 <body>
         hi this is dom
@@ -11,6 +20,33 @@
     <button> click me to see magic</button>
 
     <h1 id = "txt1"></h1>
+    <div class="headings">
+        <h1>1 st heading</h1>
+        <h1>2 nd heading</h1>
+        <h1>3rd heading</h1>
+    </div>
+    <div class="headings">
+        <h1>1 st heading</h1>
+        <h1>2 nd heading</h1>
+        <h1>3rd heading</h1>
+    </div>
+    <div class="inner">
+        <ul>Fruits
+            <li>mango</li>
+            <li>orange</li>
+            <li>litch</li>
+        </ul>
+    </div>
+
+    <br><br>
+    <h2 id = "appendExample"> hi from </h2>
+   <br>
+ 
+   <!-- IMP -->
+   <div class="box">1.st box</div>
+   <div class="box">2nd box </div>
+   <div class="box">3d box</div>
+
 
 
 
@@ -23,6 +59,42 @@
             let text1 = document.querySelector('#txt1');
             text1.textContent = "MAgic , on click";
 
+        }
+        
+        // console.log(document.window);
+        let headings = document.getElementsByClassName("headings");
+        console.log(headings);
+        console.dir(headings);
+
+
+        console.log(headings.tagname);
+        console.log(document.body.firstChild);
+        console.log(document.body.lastChild);
+
+
+
+        let inner = document.querySelector('.inner');
+        console.log(inner.innerText);
+        // inner.innerText = "babal ji"; // puri list hi change hoke sirf ye hi reh jyga
+        let inner2 = document.querySelector('.inner');
+        console.log(inner2.innerHTML);
+
+        // inner2.innerHTML =" <button> click me to see magic</button>" ; // tag hi bada jyga list se btn bn jyga
+
+
+        let appendExample = document.querySelector("#appendExample");
+        appendExample.textContent = appendExample.textContent + " babal preet singh (appended)";
+
+
+        let divs = document.querySelectorAll(".box");
+        console.log(divs); // 3 nodelists
+        divs[0].innerText = divs[0].innerText +" hi divs[0] \n";
+
+        // or sabh ko for loop se bhi kr skte;
+        let index = 1;
+        for(let d of divs){
+            d.innerText = d.innerText + `hi is bos ${index}`;
+            index++;
         }
     </script>
 
