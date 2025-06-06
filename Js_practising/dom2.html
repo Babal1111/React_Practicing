@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>
+            hi this is dom 2 
+        </p>
+    </div>
+    <div id ="e1">
+        <ul id = "e2">
+            <li>hi this is babal</li>
+            <li>hi this is babal</li>
+            <li>hi this is babal</li>
+        </ul>
+    </div>
+
+    <script>
+        let div = document.querySelector('div');
+        console.log(div.getAttribute('id'));
+
+        div.setAttribute('id','box2');
+        console.log("new id after setAttribute : "+div.getAttribute('id'));
+
+        let p = document.querySelector('p');
+        console.log(p.style);
+
+        p.style.color="blue";
+
+
+        let ele = document.createElement("ul");
+        ele.innerHTML = "<li>hi this is babal addeb by creating new ul element </li>";
+        let d = document.querySelector("#e1");
+        d.appendChild(ele);
+        // d.after(ele); // on html it will look same but see in inspect
+
+        // if we use d.after(ele) it will add ele/ or create ul, after div, not at the end of div(inside) like append
+
+         let ele2 = document.createElement("li");
+        ele2.innerText = "hi this is babal added by creating new li element ";
+         let d2 = document.querySelector("#e2");
+         d2.appendChild(ele2);
+
+        
+
+
+    </script>
+</body>
+</html>
