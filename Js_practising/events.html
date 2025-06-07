@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    1st method to handel events ie inline . in html tags only
+    <button onclick="console.log("this button is clicked")">click</button>   
+
+    <button id="btn1">btn1</button>
+    <div id="div1"> hi this is div</div>
+
+
+    <script>
+        document.getElementById("btn1").onclick=()=>{
+            console.log("btn1 is clicked");
+        }
+
+        document.querySelector('#div1').onmouseover = (e)=>{ // if we pass an argument in event handeler function, we can get to know about all the info of event that happend
+            console.log(e); // ALL INFO 
+ 
+            // or if we want to get specicfic info
+            
+            console.log("type of event : "+e.type) 
+            console.log("kis pe event hua :"+e.target); 
+            console.log(e.clientX); // x position of mouse
+            console.log(e.clientY); // y position of mouse
+
+            
+            console.log("div1 is hovered");
+        }
+    </script>
+</body>
+</html>

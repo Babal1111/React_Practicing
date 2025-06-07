@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        p{
+        #para{
             font-size: 20px;
             color: red;
+        }
+        .content{background-color: aqua;
+            height: 200px;
+            width: 200px;
+
+            color: rgb(30, 16, 44);
+        }
+        .newContent{
+            color: rgb(246, 196, 221);
         }
     </style>
 </head>
@@ -24,7 +33,13 @@
             <li>hi this is babal</li>
         </ul>
     </div>
+    <p id="para">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime quia reprehenderit incidunt labore 
+    </p>
 
+    <p class = "content">
+       abcd   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis exercitationem temporibus et assumenda nihil, aliquam nobis ex molestiae sint dolore pariatur fugit officia autem aperiam minus reiciendis magnam nostrum.
+    </p>
     <script>
         let div = document.querySelector('div');
         console.log(div.getAttribute('id'));
@@ -51,8 +66,36 @@
          let d2 = document.querySelector("#e2");
          d2.appendChild(ele2);
 
-        
+         let newBtn = document.createElement('button');
+         newBtn.innerText = "Click me";
+         let d3 = document.querySelector("#e1");
+         d3.before(newBtn);
 
+        // delete an element
+
+        let para = document.querySelector('#para');
+        para.remove();
+
+
+        /// practice
+        let btn = document.createElement("button");
+        btn.innerText= "menu dabb";
+        btn.style.backgroundColor = "lightblue";
+        btn.style.color = "red";
+
+        let body = document.querySelector('body');
+        body.prepend(btn);
+    
+    //Create a p tag in html, give it a class & some styling.
+// now create a new class in CSS and try to append this class to the element.
+// id you notice, how you overwrite the class name when you add a new one?
+// Olve this problem using classList.
+
+        let p1 = document.querySelector(".content");
+
+        // p1.setAttribute('id','newContent');
+
+        p1.classList.add('newContent');
 
     </script>
 </body>
