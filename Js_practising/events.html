@@ -10,7 +10,7 @@
     <button onclick="console.log("this button is clicked")">click</button>   
 
     <button id="btn1">btn1</button>
-    <div id="div1"> hi this is div</div>
+    <div id="div1"> hi this is div1</div>
 
 
     <script>
@@ -30,6 +30,11 @@
 
             
             console.log("div1 is hovered");
+            
+
+            document.querySelector('#div1').addEventListener('click',()=>{
+                console.log("div2 is clicked");
+            })
         }
     </script>
 </body>
