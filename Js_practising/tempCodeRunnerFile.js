@@ -1,1 +1,1 @@
-        // return stu.name;
+console.log(car);
