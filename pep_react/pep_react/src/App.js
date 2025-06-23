@@ -2,8 +2,11 @@
 import Home from "./Home";
 import Login from "./Login";
 import AppLayout from "./layout/AppLayout";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Dashboard from "./Dashboard";
+import Logout from "./Logout";
+import Error from "./pages/Error";
+import axios from "axios";
 function App() {
   
 // Tracking user details in App because App is the
@@ -20,17 +23,20 @@ const updateUserDetails = (updatedData) => {
 };
 
 
-  // const isUserLoggedIn = async ()=>{
-  //    try{
-  //     const response = await axios.post('http://localhost:5000/auth/is-user-logged-in',{},{
-  //       withCredentials: true
-  //     });
-  //     updateUserDetails(response.data.userDetails);
+  const isUserLoggedIn = async ()=>{
+     try{
+      const response = await axios.post('http://localhost:5000/auth/is-user-logged-in',{},{
+        withCredentials: true
+      });
+      updateUserDetails(response.data.userDetails);
 
-  //    }catch{
-
-  //    }
-  // }
+     }catch(error){
+      console.log('user not loggedin',error);
+     }
+  };
+  useEffect(() =>{
+    isUserLoggedIn();
+  },[]);
 
   return (
     <>
@@ -42,6 +48,7 @@ const updateUserDetails = (updatedData) => {
           <Home/>
         </AppLayout>
       }/>
+
       {/* <Route path="/" element={<AppLayout><Home/></AppLayout>}></Route> */}
       {/* <Route path="/login" element={<AppLayout><Login/></AppLayout>}></Route> */}
         <Route
@@ -56,6 +63,20 @@ const updateUserDetails = (updatedData) => {
       )
     }
   />
+
+<Route path="/logout" element={
+  userDetails ? 
+  <Logout updateUserDetails={updateUserDetails}/>:
+  // Navigate to = "/login">
+  <Login/>}>
+  </Route>
+
+<Route path="/error" element={
+  userDetails ?
+  <Error/> :
+  <AppLayout><Error/></AppLayout>
+}></Route>
+
 
     </Routes>
     </>
