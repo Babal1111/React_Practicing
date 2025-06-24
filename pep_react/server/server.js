@@ -2,14 +2,19 @@ const express = require('express');
 const authRoutes = require('./src/Routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express(); // instance of exprss 
 
 app.use(express.json());//middleware , jo bhi req aa rhi usko json format mai conver krdo
 app.use(cookieParser()); // For reading cookies
+mongoose.connect(process.env.MONGO_URI).then(()=>console.log("DB connected to mongoose")).catch(error => console.log(error));
 
 const corsOptions = {
-    origin: 'http://localhost:3000',//clients port
+
+    // origin: 'http://localhost:3000',//clients port
+    origin: process.env.CLIENT_ENDPOINT,
     credentials: true, //?
 }
 app.use(cors(corsOptions));
