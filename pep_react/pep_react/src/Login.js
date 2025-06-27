@@ -1,13 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
-function Login({updateUserDetails}) {
+import { useDispatch } from "react-redux";
+import "./styles/login.css";
+function Login() { // no need to pass user details now
+
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
 
   const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState(null);
+  // const [message, setMessage] = useState(null); .// now redux
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,29 +56,43 @@ function Login({updateUserDetails}) {
             withCredentials: true
         };
 
-        try{
+        try{       
+          
+      // const response = await axios.post(`${serrverEndpoint}/auth/login`,body,configuration); // wehave defined severEndpoint in config.js for easy changebility
+
        const response = await axios.post('http://localhost:5000/auth/login',body,configuration);
         console.log(response);
 
-        updateUserDetails(response.data.userDetails);
+        // updateUserDetails(response.data.userDetails);
+        dispatch({
+          type: 'SET_USER',
+          payload: response.data.userDetails
+        })
         }
         catch(error){
-            setErrors({message: 'something went rong try again'})
+          // on invlaid cred also it was showing: smthig went wrong ,as we were sendind 401 from backend, now we will schech if error is 401 ie setErrors to invalid credentisls
+          if(error?.response?.status===401){
+            console.log(error);
+            setErrors({message:'Invalid credentials'});
+
+          }
+          else{
+ setErrors({message: 'something went rong try again'})  
+          }
+           
             // console.log('Error')
         }
 
       } else {
-        setMessage('Invalid Credentials');
+        // setMessage('Invalid Credentials');
       }
     }
   };
-
-  return (
-    <div className="container text-center">
-      {message && <p>{message}</p>}
-
-      {errors.message &&(errors.message)}
+return (
+  <div className="login-container">
+    <div className="login-box">
       <h1>Login Page</h1>
+      {errors.message && <p className="error-message">{errors.message}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
@@ -84,7 +102,7 @@ function Login({updateUserDetails}) {
             value={formData.username}
             onChange={handleChange}
           />
-          {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
+          {errors.username && <p className="error-message">{errors.username}</p>}
         </div>
 
         <div>
@@ -95,7 +113,7 @@ function Login({updateUserDetails}) {
             value={formData.password}
             onChange={handleChange}
           />
-          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+          {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
         <div>
@@ -103,7 +121,9 @@ function Login({updateUserDetails}) {
         </div>
       </form>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default Login;

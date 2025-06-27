@@ -1,0 +1,1 @@
+export const serverEndpoint = process.env.SERVER_ENDPOINT;
