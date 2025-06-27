@@ -25,7 +25,7 @@ const dispatch = useDispatch();
 // This function takes new value of userDetails and
 // update it using setUserDetails function.
 const updateUserDetails = (updatedData) => {
-  setUserDetails(updatedData);
+  // setUserDetails(updatedData);
 };
 
 

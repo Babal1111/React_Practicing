@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import {GoogleOAuthProvider, GoogleLogin} from "@react-oauth/google";
 import "./styles/login.css";
 function Login() { // no need to pass user details now
 
@@ -88,6 +89,29 @@ function Login() { // no need to pass user details now
       }
     }
   };
+
+  const handleGoogleSignin = async(authResponse)=>{
+    try{
+      const response = await axios.post('http://localhost:5000/auth/google-auth',{
+        idToken : authResponse.credential},{
+          withCredentials: true
+        });
+        // updateUserDetails(response.data.userDetails);
+         dispatch({
+      type: 'SET_USER',
+      payload: response.data.userDetails
+    });
+
+      }
+      catch(error){
+        console.log(error);
+        setErrors({message:'something went wrong with google sign in 1'});
+      }
+  }
+  const handleGoogleSigninFailure = async(error)=>{
+    console.log(error);
+    setErrors({message:'something went wrong with google sign in 2'});
+  }
 return (
   <div className="login-container">
     <div className="login-box">
@@ -115,7 +139,11 @@ return (
           />
           {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
-
+        <h2>OR</h2>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+          <GoogleLogin onSuccess={handleGoogleSignin}
+          onError={handleGoogleSigninFailure}/>
+        </GoogleOAuthProvider>
         <div>
           <button type="submit">Submit</button>
         </div>
