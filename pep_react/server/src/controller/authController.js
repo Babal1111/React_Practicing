@@ -140,7 +140,8 @@ const authController = {
         path:'/'
       });
 
-      response.json({message:'User authenticated,userDetails: user'});
+      response.json({message:'User authenticated',
+        userDetails: user});
 
     }catch(error){
       console.log(error);
