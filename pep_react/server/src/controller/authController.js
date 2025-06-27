@@ -4,8 +4,10 @@ const bcrypt = require('bcryptjs'); //
 const Users = require('../model/Users');
 const {oAuth2Client, OAuth2Client} = require('google-auth-library');
 const { validationResult } = require('express-validator');
-const secret = "qwerty"; 
+// const secret = "qwerty"; 
+require('dotenv').config();
 
+const secret = process.env.JWT_SECRET;
 const authController = {
 
 
@@ -45,7 +47,7 @@ const authController = {
       response.json({ message: 'User authenticated', userDetails });
     } catch (error) {
       console.error(error);
-      response.status(500).json({ message: 'Internal server error' });
+      response.status(500).json({ message: 'Internal server error (jwt)' });
     }
   },
 

@@ -3,6 +3,9 @@ const authRoutes = require('./src/Routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
+const linksRoutes  = require('./src/Routes/linksRoutes');
+
 require('dotenv').config();
 
 const app = express(); // instance of exprss 
@@ -20,6 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/auth',authRoutes);
+app.use('/links',linksRoutes); // added links routes here
 
 const port = 5000;
 app.listen(port,()=>{
