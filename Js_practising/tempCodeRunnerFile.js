@@ -1,1 +1,1 @@
-console.log(car);
+step2("bhai tere room ka kya rent hai");// step3 body lik di ie 3 param mil gya abh run

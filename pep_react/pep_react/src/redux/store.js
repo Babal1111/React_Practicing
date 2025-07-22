@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-
+import {userReducer} from "./user/reducer";
 export const store = configureStore({
     reducer:{
         userDetails:(state=null,action)=>{ // agar action nhi hoga pta nhi lgega consa reducer call krna, bydefault react sare reducers ko call kr dega

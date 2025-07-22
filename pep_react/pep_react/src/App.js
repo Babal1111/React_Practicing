@@ -9,6 +9,7 @@ import Error from "./pages/Error";
 import axios from "axios";
 import RegisterForm from "./pages/RegisterForm";
 import { useDispatch, useSelector } from "react-redux";
+import Register from "./pages/Register";
 function App() {
   
 // Tracking user details in App because App is the
@@ -50,6 +51,10 @@ const updateUserDetails = (updatedData) => {
     <>
    
     <Routes>
+      <Route path = "/register" element = {userDetails ? <Navigate to ='/dashboard'/>:
+      <AppLayout>
+        <Register/>
+      </AppLayout>}/>
       <Route path = "/" element={userDetails? 
         <Dashboard/> :
         <AppLayout>
