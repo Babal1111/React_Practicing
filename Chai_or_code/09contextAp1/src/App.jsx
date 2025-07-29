@@ -1,15 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState,useEffect } from 'react'
+import {Route, Routes} from 'react-router-dom';
+import Home from './Home';
+import ThemeContext from './ThemeContext';
+import Header from './Header';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [name,setName] = useState(null);
+ useEffect(() => {
+    setName('babal');
+  }, []); 
   return (
     <>
-      <h1 className='p-4 bg-pink-600'>chai</h1>
+    <ThemeContext.Provider value={[name,setName]}>
+      <Header/>
+      <ThemeProvider>
+        <Header/>
+        </ThemeProvider>
+      <Routes>
+        
+        <Route path='/' element={<Home/>}/>
+      </Routes>
+      
+    </ThemeContext.Provider>
+      
      
     </>
   )
