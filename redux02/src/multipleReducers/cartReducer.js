@@ -4,6 +4,13 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const INC_ITEM_QUANTITY = 'INC_ITEM_QUANTITY';
 export const DEC_ITEM_QUANTITY = 'DEC_ITEM_QUANTITY';
 
+
+export function decreaseItemQuantity(productId){
+  return {
+    type: DEC_ITEM_QUANTITY,
+    payload: {productId: productId}
+  }
+}
 // Reducer
 const initialCartState = [];
 
