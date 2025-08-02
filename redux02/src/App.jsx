@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { combineReducers, createStore } from 'redux'
-import cartReducer, { ADD_TO_CART,REMOVE_FROM_CART,INC_ITEM_QUANTITY,DEC_ITEM_QUANTITY, decreaseItemQuantity } from './multipleReducers/cartReducer';
+import cartReducer, { ADD_TO_CART,REMOVE_FROM_CART,INC_ITEM_QUANTITY,DEC_ITEM_QUANTITY, decreaseItemQuantity, addToCart } from './multipleReducers/cartReducer';
 import wishlistReducer, { ADD_TO_WISHLIST,REMOVE_FROM_WISHLIST } from './multipleReducers/wishlistReducer';
 import { productsList } from '../../redux/src/productsList';
 import productReducer from './multipleReducers/productsReducer';
@@ -34,7 +34,11 @@ function App() {
    console.log("in redux2 ",store.getState());
 
    store.dispatch(decreaseItemQuantity(2));//passing action as fuction which we made in cartReducer for better code, called ACTION CREATORS
-  console.log("in redux2 after decrease qty ",store.getState());
+
+  store.dispatch(addToCart(101,5));
+  console.log("in redux2 after decrease qty  and add to cart",store.getState()); // again used action Creators ,ie action as a function
+  
+
 
 
 
